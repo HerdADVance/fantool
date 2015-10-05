@@ -1,0 +1,188 @@
+body{
+  background: #EEDDEE;
+}
+
+/*---------HEADER------------*/
+
+.navbar{
+  background: #3B1260;
+  border-bottom: 2px solid #FFD700;
+}
+a.navbar-brand{
+  color: #FFD700 !important;
+  font-size: 24px;
+}
+
+/*---------CONTAINER----------*/
+
+.outer-container {
+  background: #FFF;
+  border: 3px solid #CCC;
+  height: 850px;
+  margin: 0px auto;
+  padding: 0 2% 25px;
+  overflow: auto;
+  width: 90%;
+}
+
+/*----------PLAYER SELECT-----------*/
+
+#player-select{
+  float: left;
+  width: 50%;
+}
+#player-select ul{
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+#player-select li{
+  background: #EED2EE;
+  border: 1px solid #CCC;
+  border-bottom: none;
+  color: #3B1260;
+  cursor: pointer;
+  float: left;
+  font-size: 16px;
+  height: 45px;
+  line-height: 45px;
+  list-style-type: none;
+  text-align: center;
+  width: 55px;
+}
+.active{
+  background: #FFD700 !important;
+}
+#player-select li:hover{
+  background: #EEE;
+}
+#player-search{
+  border-color: #EEE;
+  float: right;
+  height: 38px;
+  margin-right: 1px;
+  margin-top: 7px;
+  outline: none;
+  padding: 5px;
+  text-align: right;
+  width: 35%;
+}
+#player-select table{
+  border-collapse: collapse;
+  width: 100%;
+}
+#player-select th{
+  background: #3B1260;
+  color: #FFD700;
+  font-weight: normal;
+  padding: 6px 2px;
+  text-align: center;
+}
+#player-select table tr{
+  cursor: pointer;
+}
+#player-select table tr:hover{
+  background: #FFF7CC;
+}
+#player-select table td{
+  border: 1px solid #EEDDEE;
+  padding: 3px 5px;
+  text-align: center;
+}
+td.player-name{
+  font-size: 1.125em;
+  font-weight: bold;
+}
+td.player-salary{
+  width: 75px;
+}
+td.player-position, td.player-team, td.player-toggle{
+  width: 50px;
+}
+.red{
+  color: red;
+}
+
+/* ----------SELECTED TEAM--------- */
+#team-select{
+  float: right;
+  width: 42.5%;
+}
+h4{
+  margin: 20px 0 25px;
+}
+#selected-team{
+  border-collapse: collapse;
+  width: 100%;
+}
+#selected-team tr{
+  border: 1px solid #EEDDEE;
+  height: 40px;
+  line-height: 40px;
+}
+#selected-team td{
+  padding: 3px 5px;
+}
+td.team-position{
+   background: #3B1260;
+   color: #FFD700;
+   font-size: 16px;
+   font-weight: bold;
+   text-align: center;
+   width: 50px;
+}
+td.team-name{
+  font-size: 18px;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 15px !important;
+}
+td.team-name span{
+  color: #CCC;
+  font-size: 12px;
+  font-weight: normal;
+}
+td.team-salary{
+  padding-right: 10px;
+  text-align: right;
+  width: 60px;
+}
+td.team-remove{
+  width: 50px;
+  text-align: right;
+}
+#submit-team{
+  cursor: default;
+  float: right;
+  margin: 30px 0;
+  opacity: 0.4;
+}
+#submit-team.activated{
+  cursor: pointer;
+  opacity: 1;
+}
+
+/*----------RESIZING-----------*/
+@media screen and (max-width: 1200px) {
+  #player-select li{
+    height: 35px;
+    line-height: 35px;
+    width: 40px;
+  }
+  #player-search{
+    height: 28px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  #selected-team td{
+    font-size: 14px !important;
+  }
+}
+@media screen and (max-width: 800px) {
+  #player-select, #team-select{
+    float: none;
+    width: 100%;
+  }
+}
+
+

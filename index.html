@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FanTool</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="fantool"><!-- app --><!--matches var in app.js-->
+
+  <div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#">FanTool</a>
+    </div>
+  </div>
+
+  <section ng-controller="TeamCtrl"><!-- ctrl --><!--matches controller name found in teamCtrl.js-->
+    <div class="outer-container">
+      <div id="player-select">
+        <h2>Player Select</h2>
+        <ul>
+          <li ng-click="clearPosition()" ng-class="{'active':all === true}">All</li>
+          <li ng-repeat="position in positions" ng-class="{'active':filters.position === position}" ng-click="positionSort(position)">{{position}}</li>
+        </ul>
+        <form name="search-players">
+          <input type="search" id="player-search" placeholder="Search Players" ng-model="playerSearch" />
+        </form>
+        <table>
+          <tr><th>Pos</th><th>Name</th><th>Team</th><th>Salary</th><th>+/-</th></tr>
+          <tr ng-repeat="player in players | orderBy: 'position' | orderBy: '-salary'| filter:filters | filter:playerSearch" 
+              ng-click="clickPlayer(player);">
+            <td class="player-position">{{player.position}}</td>
+            <td class="player-name">{{player.name}}</td>
+            <td class="player-team">{{player.team}}</td>
+            <td class="player-salary"><span ng-class="{ 'red': salary < player.salary }">${{player.salary | number}}</span></td>
+            <td class="player-toggle">
+              <span class="input-group-btn">
+                <button class="btn btn-success" ng-class="{ 'btn-danger': player.selected == true }" type="button">
+                  <i class="glyphicon glyphicon-plus" ng-class="{ 'glyphicon-minus': player.selected == true }"></i>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="team-select">
+        <h2>Your Team</h2>
+        <h4>Salary: <span ng-class="{ 'red': salary <0 }">${{salary | number}}</span></h4>
+        <table id="selected-team">
+          <tr ng-repeat="slot in team">
+            <td class="team-position">{{slot.position}}</td>
+            <td class="team-name"><span ng-hide="slot.player.name">Add Player</span>{{slot.player.name}}</td>
+            <td class="team-salary"><span ng-show="slot.player.name">$</span>{{slot.player.salary | number}}</td>
+            <td class="team-remove">
+              <span class="input-group-btn" ng-show="slot.player.name" ng-click="clickPlayer(slot.player);">
+                <button class="btn btn-danger" type="button">
+                  <i class="glyphicon glyphicon-minus"></i>
+                </button>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <button class="btn-success btn-lg" id="submit-team" ng-class="{'activated': activated === true }">Submit Team</button>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+<!-- JS Assets -->
+<script src="js/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/TeamCtrl.js"></script>
+</html>
