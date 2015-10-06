@@ -87,6 +87,9 @@ a.navbar-brand{
   border: 1px solid #EEDDEE;
   padding: 3px 5px;
   text-align: center;
+  -webkit-user-select: none;      
+  -moz-user-select: none; 
+  -ms-user-select: none
 }
 td.player-name{
   font-size: 1.125em;
